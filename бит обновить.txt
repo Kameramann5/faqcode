@@ -1,0 +1,38 @@
+1 В свежеустановленном 1С-Битрикс перейдите в Настройки — Производительность — Таблицы. b_option  - поиск main - строка admin_passwordh
+
+Инструменты — SQL запрос. Для просмотра значения admin_passwordh выполните: 
+
+SELECT * FROM b_option WHERE `NAME`='admin_passwordh'
+
+вставьте в 1С-Битрикс с истекшей лицензией: UPDATE b_option SET `VALUE` = 'тут скопированное значение' WHERE `NAME`='admin_passwordh'
+
+2 Обновите хэш
+
+найдите файл /bitrix/modules/main/admin/define.php и скопируйте его содержимое в тот же файл 1С-Битрикс с истекшей лицензией, что то типа: 
+
+define("TEMPORARY_CACHE", "ARtsfwYHb2MMdAgebRtkG2sA");
+
+3 Удалите файлы кэша 
+
+Удалите содержимое /bitrix/managed_cache/
+
+4 Доступ в маркет
+
+Чтобы пользоваться маркетплейс (если нужно), со свежеустановленного 1С-Битрикс перенесите файл /bitrix/license_key.php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
