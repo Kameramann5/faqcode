@@ -14,7 +14,7 @@
 
          </div>  </div>
 
-*php парсер*
+php парсер
 
 include 'phpQuery-onefile.php';
 
