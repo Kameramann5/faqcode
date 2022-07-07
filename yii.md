@@ -1,6 +1,6 @@
-меню меняется в views/layouts/main.php
-чтобы создать страницу нужно в SiteController добавить
-  /**
+**меню меняется в views/layouts/main.php**
+**чтобы создать страницу нужно в SiteController добавить**
+  /*
      * Displays book_all page.
      */
     public function actionBook_all()
@@ -8,7 +8,7 @@
       
         return $this->render('book_all');
     }
-и создать файл в views/site/test.php
+**и создать файл в views/site/test.php**
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
