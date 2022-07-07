@@ -120,16 +120,18 @@ foreach( $myposts as $post ){ setup_postdata($post);   ?>
           </div>    
 <?php    }    wp_reset_postdata();   ?>
 ```
-**// Заменяем тег <H2> на <p> у товаров**
-```
+**Заменяем тег H2 на p у товаров**
+
+ ```
 remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
 add_action( 'woocommerce_shop_loop_item_title', 'custom_woocommerce_template_loop_product_title', 10 );
 function custom_woocommerce_template_loop_product_title() {
    echo '<p class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</p>';
 }
 
-// конец Заменяем тег <H2> на <p> у товаров
+// конец Заменяем тег H2 на p у товаров
  ```
+ **Отключить генерация картинок**
  ```
 // Отключить генерация картинок
 вывод массива add_action('after_setup_theme', function() {
@@ -164,6 +166,7 @@ function wp_robots_remove_noindex( $robots ){
  return $robots;    }
 //конец скрыть от индексации пагинацию
 ```
+**запрет обновления плагинов**
 ```
 //запрет обновления плагинов
 add_filter( 'site_transient_update_plugins', 'filter_plugin_updates' );
@@ -174,6 +177,7 @@ function filter_plugin_updates( $value ) {
    return $value;
 } //конец запрет обновления плагинов
 ```
+**скрыть от индексации только страницы пагинацию третий способ**
 ```
 //скрыть от индексации только страницы пагинацию третий способ
 add_filter( 'wp_robots', 'wp_robots_remove_noindex', 999 );
@@ -185,6 +189,7 @@ function wp_robots_remove_noindex( $robots ){
   return $robots;    }
 //конец скрыть от индексации только страницы пагинацию третий способ
 ```
+**изменить комментарии, их форму**
 ```
 //изменить комментарии, их форму
 add_filter('comment_form_defaults', 'ocean_custom_comment_title', 20);
@@ -212,6 +217,7 @@ ok
 add_shortcode('postscustom', 'get_postscustom');
 //конец свой шорткод
 ```
+**гугл аналитика**
 ```
 //гугл аналитика
 <!-- Global site tag (gtag.js) - Google Analytics -->
