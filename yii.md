@@ -1,5 +1,6 @@
 **меню меняется в views/layouts/main.php**
 **чтобы создать страницу нужно в SiteController добавить**
+```
   /*
      * Displays book_all page.
      */
@@ -8,7 +9,9 @@
       
         return $this->render('book_all');
     }
+  ```
 **и создать файл в views/site/test.php**
+```
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
@@ -16,3 +19,4 @@ use yii\captcha\Captcha;
 $this->title = 'Книги';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+```
