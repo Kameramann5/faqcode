@@ -1,5 +1,5 @@
-<b>код
-</b>
+код
+
 
 
 <div style="clear: both;"></div>
