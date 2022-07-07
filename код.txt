@@ -1,0 +1,589 @@
+код
+
+
+
+<div style="clear: both;"></div>
+
+<div class="container">
+
+<div class="row">
+
+<div class="col">
+
+         </div>
+
+         </div>  </div>
+
+php парсер
+
+include 'phpQuery-onefile.php';
+
+$html = file_get_contents('https://www.kstu.ru/news.jsp?idparent=0&id_cat=1');
+
+$document = phpQuery::newDocument($html);
+
+$echo = $document->find('.news__label__item');
+
+echo $echo;
+
+запрет цифр проверить ввод символом  
+
+
+
+jQuery('.cf7_name_check').on('input', function() {
+
+
+
+запрет букв    jQuery(this).val(jQuery(this).val().replace(/[A-Za-zА-Яа-яЁё]/, ''))
+
+
+
+или запрет ввода цифр   jQuery(this).val(jQuery(this).val().replace(/[1-9]/, ''))
+
+
+
+});
+
+
+
+добавить титл кнопке отправки
+
+
+
+var cf7_btn = document.querySelector(".wpcf7-submit");
+
+
+
+cf7_btn .setAttribute("title","Отправить запрос");
+
+
+
+исключить класс из всеобщей стилизации    h3, h4, h5:not(.footer-area h5), h6  {color: black !important}
+
+
+
+тень рамка box-shadow: 0px 0px 0px 1px white inset;
+
+
+
+JS  $(document).on('ready', function() { //kod  });
+
+
+
+плейсхолдер https://via.placeholder.com/100x100
+
+
+
+modx вывод чанка на опр странице (создать tv checkbox) [[*podpiska:notempty=`[[$podpiska]]`]]
+
+
+
+фон затемнение linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/wp-content/themes/storefront/assets/images/index/slick/slides/tehniceskaya-poddergka-saita.jpg') no-repeat top center
+
+
+
+установить атрибут js  
+
+
+
+var b = document.querySelector(".header-btn");
+
+
+
+b.setAttribute("data-bs-toggle", "modal");
+
+
+
+валидация, только латиница cf7
+
+
+
+var cf7_modal_main_name = document.getElementById('cf7_modal_main_name');
+
+
+
+cf7_modal_main_name.setAttribute("onkeyup", "validate();");
+
+
+
+function validate() {
+
+
+
+ cf7_modal_main_name.value = cf7_modal_main_name.value.replace(/[^a-zA-Z0-9@]+/, '');
+
+
+
+};
+
+
+
+если есть нужный класс, то выполнить поиск всех классов  элемента и установить им значение
+
+
+
+   if (document.querySelector(".out-of-stock")) {
+
+
+
+       var c = document.querySelectorAll(".jet-woo-product-gallery__image-link");
+
+
+
+       for (let elem of c) {
+
+
+
+           elem.setAttribute("style",
+
+
+
+               "  background: red");
+
+
+
+       }   }
+
+
+
+наличие класса     if(!my_class){alert('меня нет на странице');} else {alert('я присутствую');}
+
+
+
+сравнение js   if (url!='https://it-gradient.ru/')  
+
+
+
+оборачиватель  
+
+
+
+function wrap(el, wrapper) {
+
+
+
+el.parentNode.insertBefore(wrapper, el);
+
+
+
+wrapper.appendChild(el); }
+
+
+
+wrap(document.querySelector('.t45'), document.createElement('noindex'));
+
+
+
+
+
+
+
+дублирование копирование js //перемещение избранного и сравнения
+
+
+
+   var bc = document.querySelector(".wishlist_compare_button_block");
+
+
+
+   bc.setAttribute("id", "wishlist_block");
+
+
+
+   varclonedNode = document.getElementById("wishlist_block").cloneNode(true);
+
+
+
+   clonedNode.setAttribute("id", "wishlist_block wishlist_block2");
+
+
+
+   clonedNode.setAttribute("class", "wishlist_compare_button_block wishlist_compare_button_block2");
+
+
+
+   document.querySelector("#wishlist_div").appendChild(clonedNode);
+
+
+
+Замена тегов (выводит в тег сразу все данные)
+
+
+
+var bread = jQuery('.breadcrumbs__title');
+
+
+
+var elem = jQuery('<div class="breadcrumbs__title" />');
+
+
+
+bread.find('h5').each(function(){
+
+
+
+elem.append(jQuery('<p class="page-title">'+jQuery(this).html()+'</p>')); });
+
+
+
+bread.replaceWith(elem);
+
+
+
+заменить надпись
+
+
+
+var b = document.querySelector(".related-posts .related-posts__title");
+
+
+
+if(!b){} else {   b.innerHTML = 'Последние записи';  }
+
+
+
+Поиск и замена
+
+
+
+Ctrl+h
+
+
+
+@font-face {
+
+
+
+   font-family: 'Montserrat-SemiBold';
+
+
+
+   src: url('../fonts/Montserrat-SemiBold.ttf')
+
+
+
+       ;
+
+
+
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 1700px) {
+
+
+
+ a {
+
+
+
+ 
+
+
+
+ }
+
+
+
+}
+
+
+
+
+
+
+
+/* checkbox contact form 7*/
+
+
+
+.wpcf7-acceptance input[type="checkbox"] {
+
+
+
+  position: relative;
+
+
+
+  cursor: pointer;
+
+
+
+  padding: 0;
+
+
+
+  margin-right: 5px;
+
+
+
+  width: 20px;
+
+
+
+}
+
+
+
+.wpcf7-acceptance input[type="checkbox"]:before {
+
+
+
+  content: '';
+
+
+
+  margin-right: 10px;
+
+
+
+  display: inline-block;
+
+
+
+  margin-top: -2px;
+
+
+
+  width: 20px;
+
+
+
+  height: 20px;
+
+
+
+  background: #fcfcfc;
+
+
+
+  border: 1px solid #58442c;
+
+
+
+  border-radius: 2px;
+
+
+
+}
+
+
+
+.wpcf7-acceptance input[type="checkbox"]:checked:before {
+
+
+
+  background: #58442c;
+
+
+
+  border-color: #58442c;
+
+
+
+}
+
+
+
+ .wpcf7-acceptance input[type="checkbox"]:disabled {
+
+
+
+  color: #b8b8b8;
+
+
+
+  cursor: auto;
+
+
+
+}
+
+
+
+.wpcf7-acceptance input[type="checkbox"]:disabled:before {
+
+
+
+  box-shadow: none;
+
+
+
+  background: #ddd;
+
+
+
+}
+
+
+
+.wpcf7-acceptance input[type="checkbox"]:checked:after {
+
+
+
+  content: '';
+
+
+
+  position: absolute;
+
+
+
+  left: 5px;
+
+
+
+  top: 8px;
+
+
+
+  background: white;
+
+
+
+  width: 2px;
+
+
+
+  height: 2px;
+
+
+
+  box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+
+
+
+  transform: rotate(45deg);
+
+
+
+}
+
+
+
+/*end checkbox  contact form 7*/
+
+
+
+/* checkbox комментарии*/
+
+
+
+.comment-form-cookies-consent2 input[type="checkbox"] {
+
+
+
+   position: relative; cursor: pointer; padding: 0;
+
+
+
+ margin-right: 5px; width: 20px;  }
+
+
+
+.comment-form-cookies-consent2 input[type="checkbox"]:before {  
+
+
+
+ content: ''; margin-right: 10px; display: inline-block;
+
+
+
+ margin-top: -2px; width: 20px; height: 20px;
+
+
+
+ background: #fcfcfc; border: 1px solid #03227c; border-radius: 2px;  }
+
+
+
+.comment-form-cookies-consent2 input[type="checkbox"]:checked:before {   background: #03227c; border-color: #03227c;  }
+
+
+
+.comment-form-cookies-consent2 input[type="checkbox"]:disabled { color: #b8b8b8; cursor: auto; }
+
+
+
+.comment-form-cookies-consent2 input[type="checkbox"]:disabled:before { box-shadow: none; background: #ddd;  }
+
+
+
+.comment-form-cookies-consent2 input[type="checkbox"]:checked:after {
+
+
+
+ content: ''; position: absolute; left: 5px;
+
+
+
+ top: 8px; background: white; width: 2px;  height: 2px;
+
+
+
+ box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+
+
+
+ transform: rotate(45deg);  }
+
+
+
+/*end checkbox  комментарии*/
+
+
+
+текущий год <?php $today = date("Y");  echo $today;   ?>  or <?php echo date('Y'); ?>
+
+
+
+font awesome  <script src="https://kit.fontawesome.com/0c6b5860ac.js" crossorigin="anonymous" ></script>
+
+
+
+если содержит часть url if (preg_match ('#^/model-tag/#', $_SERVER['REQUEST_URI']) ) {
+
+
+
+//копирайт внизу сайта
+
+
+
+<?php if( is_front_page() ) {?>  
+
+
+
+   <div class="footer_logo_itgradient">  
+
+
+
+   <p style="font-size: 12px;"><a rel="nofollow" title="Создание сайтов в Казани" href="" target="_blank">
+
+
+
+    - Создание сайтов в Казани</a></p> </div>
+
+
+
+   <?php } else {  ?>
+
+
+
+    <div class="footer_logo_itgradient">  
+
+
+
+   <p style="font-size: 12px;color:white">
+
+
+
+    Создание сайтов в Казани</p> </div>
+
+
+
+   <?php }   ?>
