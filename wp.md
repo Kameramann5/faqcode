@@ -1,29 +1,59 @@
-соглашение  [acceptance acceptance-783 class:contact-acceptance2-modal ]
-Даю согласие на обработку <a target="_blank" href="/politika-konfidencialnosti/" rell="nofollow" id="consent">персональных данных*</a> [/acceptance]
-маска телефона cf7 [mask* mask-tel class:cf7_tel maxlength:40 placeholder"Введите телефон*" "+7 (___) ___-__-__" ]
-wp
+**соглашение** 
+```
+[acceptance acceptance-783 class:contact-acceptance2-modal ]
+```
+**Даю согласие на обработку**
+```
+<a target="_blank" href="/politika-konfidencialnosti/" rell="nofollow" id="consent">персональных данных*</a> [/acceptance]
+```
+**маска телефона cf7**
+```
+[mask* mask-tel class:cf7_tel maxlength:40 placeholder"Введите телефон*" "+7 (___) ___-__-__" ]
+```
+**wp**
+```
  $category = get_queried_object();
     $current_cat_id = $category->term_id;
     $current_cat_name = $category->name;
-wp подключение стилей
+   ```
+**wp подключение стилей**
+```
 <?php  echo get_template_directory_uri()  ?>/
-домашняя директория
+```
+**домашняя директория**
+```
 <?php echo get_home_url()  ?>/
-шорткод  <?php echo do_shortcode('');  ?>    
-ACF <?php the_field('имя_поля'); ?>
-ACF ГРУППА  
+```
+**шорткод**
+```
+<?php echo do_shortcode('');  ?>
+```
+**ACF**
+```
+<?php the_field('имя_поля'); ?>
+```
+**ACF ГРУППА**
+```
 <?php
 $hero = get_field('group');
 if( $hero ): ?>
     <div class="col">  
   <?phpecho $hero['text'];  ?>  
 <a data-fancybox="doctor" href="<?php echo esc_url( $hero['doctor_spec6']['url'] ); ?> "> <img alt="<?php  the_title('', ''); ?>" src="<?php echo esc_url( $hero['doctor_spec6']['url'] ); ?> "  /> </a> </div>    
-<?php endif; ?>  
-или
+<?php endif; ?>
+```
+
+**или**
+```
 <?php $hero = get_field('group_img');  ?>
 <?php if (!empty($hero['doctor_spec_img']['url'])) {  ?>    <div class="doctor_slide_img">  <a data-fancybox="doctor" href="<?php echo esc_url( $hero['doctor_spec_img']['url'] ); ?> "> <img alt="<?php  the_title('', ''); ?>" src="<?php echo esc_url( $hero['doctor_spec_img']['url'] ); ?> "  /> </a>  </div><?php } ?>
-ACF пустота  <?php if( get_field("field_name") ): ?> контент<?php endif; ?>
-ACF пустота
+```
+**ACF пустота**
+```
+<?php if( get_field("field_name") ): ?> контент<?php endif; ?>
+```
+**ACF пустота**
+```
 <?php
                $bread_term = get_queried_object();
                $bread = get_field('breadcrumbs', $bread_term);
@@ -32,10 +62,14 @@ ACF пустота
                }  else {   ?>  
                <span></span>
            <?php } ?>
-ACF вывести в категориях
+     ```
+**ACF вывести в категориях**
+```
 $doctor_category_h1 = get_queried_object();
 elseif (  get_field( 'doctor_category_h1', $doctor_category_h1 ) )   {  ?>   <h1 class="page-title">  <?php   the_field( 'doctor_category_h1', $doctor_category_h1 );  ?></h1> <? }
-Страницы
+```
+**Страницы**
+```
 <?php if (is_page('Главная'))
 {
 echo"ggggggggggg";
@@ -43,7 +77,8 @@ echo"ggggggggggg";
 else
 {
 } ?>
-если содержит url  
+```
+**если содержит url**  
 <?php   $parsed = parse_url(get_site_url( null, null, null ));
 $host_custom = $parsed['host'];
 $host_custom_url = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
