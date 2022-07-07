@@ -78,20 +78,30 @@ else
 {
 } ?>
 ```
-**если содержит url**  
+**если содержит url**
+```
 <?php   $parsed = parse_url(get_site_url( null, null, null ));
 $host_custom = $parsed['host'];
 $host_custom_url = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 if($host_custom_url ==  "$host_custom/doctor/bishal-battaray/")  {  } ?>
-если содержит url       <?php   /*условие для title */
+```
+**если содержит url**
+```
+<?php   /*условие для title */
                $parsed = parse_url(get_site_url( null, null, null ));
 $host4 = $parsed['host'];
               $host = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
               if($host ==  "$host4/doctor/")  {  echo  '  <title >Все доктора</title>';  }
 elseif    ($host ==  "$host4/blog/")   {    echo  '  <title >Блог</title>';   }
 else  {  ?>      <title class="page-title"> <?php echo esc_html($page_title) ?> </h1>    <?php  } ?>
-если главная страница     <?php   if( is_front_page() ) { //код }    ?>
-вп вывод записей
+```
+
+**если главная страница**
+```
+<?php   if( is_front_page() ) { //код }    ?>
+```
+**вп вывод записей**
+```
 <?php
 global $post;
 $args = array( 'post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1);
@@ -106,14 +116,19 @@ foreach( $myposts as $post ){ setup_postdata($post);   ?>
            </div>
            </div>
           </div>    
-<?php    }    wp_reset_postdata();   ?>  
-// Заменяем тег <H2> на <p> у товаров
+<?php    }    wp_reset_postdata();   ?>
+```
+**// Заменяем тег <H2> на <p> у товаров**
+```
 remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
 add_action( 'woocommerce_shop_loop_item_title', 'custom_woocommerce_template_loop_product_title', 10 );
 function custom_woocommerce_template_loop_product_title() {
    echo '<p class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</p>';
 }
+
 // конец Заменяем тег <H2> на <p> у товаров
+ ```
+ ```
 // Отключить генерация картинок
 вывод массива add_action('after_setup_theme', function() {
 echo '<pre>';
@@ -121,7 +136,9 @@ print_r(wp_get_additional_image_sizes());
 echo '</pre>';
 die();
 }, 999);
-функция  
+ ```
+**функция**
+ ```
 // Отключить генерация картинок
 function dco_remove_default_image_sizes( $sizes) {
    return array_diff( $sizes, array(
@@ -130,6 +147,8 @@ function dco_remove_default_image_sizes( $sizes) {
 ) );}
 add_filter('intermediate_image_sizes', 'dco_remove_default_image_sizes');
 //конец Отключить генерация картинок
+ ```
+ ```
 //начало скрыть от индексации пагинацию первый способ
 function wpschool_noindex_paged() {    if ( is_paged() ){   ?>
            <meta name="robots" content="noindex,nofollow">    <?php  }  }
@@ -142,6 +161,8 @@ function wp_robots_remove_noindex( $robots ){
    $robots[ 'nofollow' ] = true;    }
  return $robots;    }
 //конец скрыть от индексации пагинацию
+```
+```
 //запрет обновления плагинов
 add_filter( 'site_transient_update_plugins', 'filter_plugin_updates' );
 function filter_plugin_updates( $value ) {
@@ -150,6 +171,8 @@ function filter_plugin_updates( $value ) {
    unset( $value->response['elementor/elementor.php'] );
    return $value;
 } //конец запрет обновления плагинов
+```
+```
 //скрыть от индексации только страницы пагинацию третий способ
 add_filter( 'wp_robots', 'wp_robots_remove_noindex', 999 );
 function wp_robots_remove_noindex( $robots ){
@@ -159,6 +182,8 @@ function wp_robots_remove_noindex( $robots ){
       }
   return $robots;    }
 //конец скрыть от индексации только страницы пагинацию третий способ
+```
+```
 //изменить комментарии, их форму
 add_filter('comment_form_defaults', 'ocean_custom_comment_title', 20);
 function ocean_custom_comment_title( $defaults ){
@@ -170,7 +195,9 @@ function ocean_custom_comment_title( $defaults ){
  return $defaults;
 }
 //конец изменить комментарии, их форму
-//свой шорткод
+```
+**свой шорткод**
+```
 //добавить в функцию
 include( get_template_directory() . "/assets/shortcodes/posts.php" );  
 сам шорткод, вызов [postscustom]
@@ -182,6 +209,8 @@ ok
    <?php  return ob_get_clean();  }
 add_shortcode('postscustom', 'get_postscustom');
 //конец свой шорткод
+```
+```
 //гугл аналитика
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113043865-1"></script>
@@ -202,6 +231,9 @@ gtag('config', 'UA-113043865-1');</script>
  }, false);
 </script>
 //конец гугл аналитика
+```
+**консоль вп заметки**
+```
 //консоль вп заметки
 function console_note() { ?>
   <a href="/wp-admin/edit.php?post_type=acf-field-group">  Группа полей</a>
@@ -209,3 +241,4 @@ function console_note() { ?>
 function add_console_note() {     wp_add_dashboard_widget( 'console_note', __( 'Заметки' ), 'console_note' );  }
 add_action('wp_dashboard_setup', 'add_console_note' );
 //конец консоль вп заметки
+```
