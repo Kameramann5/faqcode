@@ -1,6 +1,6 @@
 **меню меняется в views/layouts/main.php**
 <br/>
-**чтобы создать страницу нужно в SiteController добавить**
+**чтобы создать новую страницу нужно в SiteController добавить**
 ```
   /*
      * Displays book_all page.
