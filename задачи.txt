@@ -10,31 +10,48 @@
 10 не оставлять комп вкл
 11 чтобы в карте сайте не было техн страниц
 12 чтобы не было кириллицы, проверить url
+
 RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www.studio-elena-gric.ru$ [NC]
 RewriteRule ^(.*)$ http://site.ru/$1 [R=301,L]
+
 или
+
 RewriteCond %{HTTP_HOST} ^www\.(.*)$
 RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
+
 или
+
 RedirectMatch ^/muzhchina-po-vyzovu-v-moskovskoj-oblasti/v-dmitrive/(.*)$ https://maxxxl24.ru/muzhchina-po-vyzovu-v-moskovskoj-oblasti/v-dmitrove/$1
+
 или вкл ssl для www домена
+
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
 RewriteRule ^index\.html$ https://example.com/ [R=301,L]
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
 RewriteRule ^index\.php$ http://example.com/ [R=301,L]
+
 добавить слеш в конец url RewriteCond %{REQUEST_FILENAME} !-f
+
 RewriteCond %{REQUEST_URI} !(.*)/$
 RewriteRule ^(.*[^/])$ $1/ [L,R=301]
+
 убрать слеш в конце url RewriteCond %{HTTP_HOST} (.*)
+
 RewriteCond %{REQUEST_URI} /$ [NC]
 RewriteRule ^(.*)(/)$ $1 [L,R=301]
+
 http to https
+
 RewriteCond %{HTTPS} =off
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [QSA,L]
+
 переадресация с одного сайта на другой
-Redirect 301 /sitemap.html https://it-gradient.ru/sitemap
+
+Redirect 301 /sitemap.html https://it.ru/sitemap
+
 вывести что-нибудь на нужной странице
+
   <?php $parsed = parse_url(get_site_url( null, null, null ));     $host0 = $parsed['host'];
      $host = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
      if($host ==  "$host0/doctor/")  {  echo  '';  }  ?>
