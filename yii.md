@@ -3,12 +3,12 @@
 **чтобы создать новую страницу нужно в SiteController добавить**
 ```
   /*
-     * Displays book_all page.
+     * Displays test page.
      */
-    public function actionBook_all()
+    public function actionTest()
     {
       
-        return $this->render('book_all');
+        return $this->render('test');
     }
   ```
 **и создать файл в views/site/test.php**
