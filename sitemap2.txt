@@ -1,228 +1,79 @@
-
-
 <?php
-
 /*
-
 Template Name: карта сайта
-
 */
-
-
-
-
-
 get_header();
-
-
-
-
-
 ?>
-
 <style>
-
 .sitemap_heading {        font-weight: 600;font-size:28px;    font-family: 'Open Sans', sans-serif;
-
 }
-
 .pagenav {      list-style-type: none;}
-
 .page_item {      list-style-type: none;}
-
 .page_item  a {  color: black;
-
     text-decoration: none;
-
     font-size: 14px;
-
     font-family: 'Open Sans', sans-serif;}
-
     .page_item  a:hover {  color:white;transition:0.3s;}
-
     .subcategory li  {      list-style-type: none;}
-
     .subcategory ul {  margin-bottom: 0;    padding: 0;}
-
     .subcategory a  {  color: black;
-
     text-decoration: none;
-
     font-size: 14px;
-
     font-family: 'Open Sans', sans-serif;}
-
     .subcategory a:hover {  color:white;transition:0.3s;}
-
     .subcategory-title {     margin-bottom: 0rem;}
-
     #subcategory-archive {      padding-bottom: 70px;}
-
 </style>
-
 <h1>Карта сайта</h1>
-
 <?php wp_list_pages($args = array(
-
     'authors'      => '', // все авторы
-
     'child_of'     => 0, // и родительские и дочерние страницы
-
     'date_format'  => get_option('date_format'),
-
     'depth'        => 0, // любой уровень вложенности
-
     'echo'         => 1, // вывести результат
-
     'exclude'      => '', // ничего не исключать
-
     'include'      => '', // не выводить какие-либо конкретные страницы
-
     'link_after'   => '', // ничего не добавлять перед ссылкой
-
     'link_before'  => '', // ничего не добавлять после ссылки
-
     'post_type'    => 'page', // тип поста - только страницы
-
     'post_status'  => 'publish', // статус - только опубликованные
-
     'show_date'    => '', // не указывать дату
-
     'sort_column'  => 'menu_order, post_title', // сорировать по порядку, а затем по заголовку
-
         'sort_order'   => '', // порядок сортировки - по возрастанию
-
     'title_li'     => __('<p class="sitemap_heading">Страницы</p>'), // заголовок списка - Страницы
-
 ));
-
 ?>
-
-
-
-
-
-
-
 <p class="sitemap_heading">Категории</p>
-
 <div id="subcategory-archive">
-
-
-
-
-
 <?php $terms = get_terms( array(
-
     'taxonomy' => 'product_cat',
-
     'hide_empty' => true,
-
     'pad_counts'=> true,
-
     'orderby' => 'name',
-
     'parent' => 0
-
 ) ); ?>  
-
-
-
-
-
 <?php if($terms) : ?>
-
 <?php foreach($terms as $term) : ?>
-
-
-
-
-
     <div class="subcategory">
-
-
-
-
-
-
-
     <p  class="subcategory-title"><a href="<?php echo get_term_link($term->term_id);?>"><?php echo $term->name;?></a></p>
-
-
-
-
-
     <!--<div class="subcategory-descripton"><p><?php //if($term->description) : ?><?php //echo $term->description; ?><?php //else: ?>Описание термина таксономии<?php //endif; ?></p></div>-->
-
-
-
-
-
     <?php // Создаем массив терминов детей текущего термина текущей таксономии
-
     $tax = $term->taxonomy;
-
     $children_terms = get_terms( array(
-
         'taxonomy' => $tax,
-
         'hide_empty' => false,
-
         'parent' => $term->term_id
-
     ) ); ?>
-
-
-
-
-
     <?php if($children_terms): // если есть дочерние категории ?>
-
     <ul><?php foreach ($children_terms as $children_term) : ?>
-
     <?php $link = get_term_link($children_term); ?>
-
-
-
-
-
         <li><a href="<?php echo $link ?>";><?php echo $children_term->name ?></a></li>
-
         <!--<p class="count"><?php //echo $children_term->count ?></p>-->
-
-
-
-
-
     <?php endforeach; ?></ul>
-
     <?php endif; // конец условия - если есть дочерние термины таксономии ?>  
-
-
-
-
-
     </div>
-
-
-
-
-
 <?php endforeach; ?>
-
 <?php endif; ?>
-
-
-
 </div>
-
-
-
-
-
-
-
 <?php  
-
 get_footer();
-
