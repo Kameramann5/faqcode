@@ -62,7 +62,9 @@ if( $hero ): ?>
                }  else {   ?>  
                <span></span>
            <?php } ?>
-     ```
+   ``` 
+     
+    
 **ACF вывести в категориях**
 ```
 $doctor_category_h1 = get_queried_object();
