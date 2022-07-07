@@ -1,0 +1,452 @@
+<?php
+
+get_header();
+
+$post_style = medtab_get_option('blog-style', 'style-1');
+
+?>
+
+<style>
+
+h1 {width:100%}
+
+.pagenav {      list-style-type: none;}
+
+.page_item {      list-style-type: none;}
+
+li  {      list-style-type: none;}
+
+li p {      margin: 0;}
+
+.sitemap_heading {  margin: 0;}
+
+@media screen and (max-width: 600px) {
+
+h1  {        font-size: 40px;
+
+   margin-left: 20px;  
+
+ }
+
+}
+
+</style>  
+
+   <div class="section section-padding">
+
+       <div class="container">
+
+           <div class="row">
+
+   
+
+<h1>Карта сайта</h1>
+
+<div class="col-12">
+
+<?php wp_list_pages($args = array(
+
+'authors'      => '', // все авторы
+
+'child_of'     => 0, // и родительские и дочерние страницы
+
+'date_format'  => get_option('date_format'),
+
+'depth'        => 0, // любой уровень вложенности
+
+'echo'         => 1, // вывести результат
+
+'exclude'      => '', // ничего не исключать
+
+'include'      => '', // не выводить какие-либо конкретные страницы
+
+'link_after'   => '', // ничего не добавлять перед ссылкой
+
+'link_before'  => '', // ничего не добавлять после ссылки
+
+'post_type'    => 'page', // тип поста - только страницы
+
+'post_status'  => 'publish', // статус - только опубликованные
+
+'show_date'    => '', // не указывать дату
+
+'sort_column'  => 'menu_order, post_title', // сорировать по порядку, а затем по заголовку
+
+       'sort_order'   => '', // порядок сортировки - по возрастанию
+
+'title_li'     => __('<p class="sitemap_heading">Страницы</p>'), // заголовок списка - Страницы
+
+));
+
+?> </div>
+
+<div class="col-12">  
+
+<?php  
+
+ $count_posts = wp_count_posts();
+
+ $published_posts = $count_posts->publish;
+
+
+
+ if ($published_posts!=0) {echo '<p class="sitemap_heading">Статьи</p>  ';}
+
+ ?>
+
+
+
+
+
+<ul >
+
+<?php
+
+global $post;
+
+$args = array( 'post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1);
+
+$myposts = get_posts( $args );
+
+foreach( $myposts as $post ){ setup_postdata($post);  ?>        
+
+<li>   <a href="<?php the_permalink(); ?>">     <p><?php the_title(); ?></p>   </a> </li>                  
+
+<?php
+
+}
+
+wp_reset_postdata();
+
+?>  
+
+ </ul>  
+
+ </div>
+
+ <div class="col-12">  
+
+<?php  
+
+$args = array(
+
+'show_option_all'    => '',
+
+'show_option_none'   => __('No categories'),
+
+'orderby'            => 'name',
+
+'order'              => 'ASC',
+
+'style'              => 'list',
+
+'show_count'         => 0,
+
+'hide_empty'         => 1,
+
+'use_desc_for_title' => 1,
+
+'child_of'           => 0,
+
+'feed'               => '',
+
+'feed_type'          => '',
+
+'feed_image'         => '',
+
+'exclude'            => '',
+
+'exclude_tree'       => '',
+
+'include'            => '',
+
+'hierarchical'       => true,
+
+'title_li'           => __( '<p class="sitemap_heading">Рубрики</p>' ),
+
+'number'             => NULL,
+
+'echo'               => 1,
+
+'depth'              => 0,
+
+'current_category'   => 0,
+
+'pad_counts'         => 0,
+
+'taxonomy'           => 'category',
+
+'walker'             => 'Walker_Category',
+
+'hide_title_if_empty' => false,
+
+'separator'          => '<br />',
+
+);
+
+
+
+
+
+wp_list_categories( $args );
+
+
+
+?>
+
+ </div>
+
+
+
+ <div class="col-12">  
+
+<?php  
+
+ $count_posts = wp_count_posts();
+
+ $published_posts = $count_posts->publish;
+
+
+
+ if ($published_posts!=0) {echo '<p class="sitemap_heading">Все услуги</p>  ';}
+
+ ?>
+
+
+
+
+
+<ul >
+
+<?php
+
+global $post;
+
+$args = array(  'taxonomy'=>'service-category', 'post_type'=>'service', 'post_status'=>'publish', 'posts_per_page'=>-1);
+
+$myposts = get_posts( $args );
+
+foreach( $myposts as $post ){ setup_postdata($post);  ?>        
+
+<li>   <a href="<?php the_permalink(); ?>">     <p><?php the_title(); ?></p>   </a> </li>                  
+
+<?php
+
+}
+
+wp_reset_postdata();
+
+?>  
+
+ </ul>  
+
+ </div>
+
+
+
+
+
+
+
+
+
+ <div class="col-12">  
+
+<?php  
+
+$args = array(
+
+'show_option_all'    => '',
+
+'show_option_none'   => __('No categories'),
+
+'orderby'            => 'name',
+
+'order'              => 'ASC',
+
+'style'              => 'list',
+
+'show_count'         => 0,
+
+'hide_empty'         => 0,
+
+'use_desc_for_title' => 1,
+
+'child_of'           => 0,
+
+'feed'               => '',
+
+'feed_type'          => '',
+
+'feed_image'         => '',
+
+'exclude'            => '',
+
+'exclude_tree'       => '',
+
+'include'            => '',
+
+'hierarchical'       => true,
+
+'title_li'           => __( '<p class="sitemap_heading">Категории услуг</p>' ),
+
+'number'             => NULL,
+
+'echo'               => 1,
+
+'depth'              => 0,
+
+'current_category'   => 0,
+
+'pad_counts'         => 0,
+
+'taxonomy'           => 'service-category',
+
+'walker'             => 'Walker_Category',
+
+'hide_title_if_empty' => false,
+
+'separator'          => '<br />',
+
+);
+
+
+
+
+
+wp_list_categories( $args );
+
+
+
+
+
+?>   </div>
+
+ <div class="col-12">  
+
+<?php  
+
+$args = array(
+
+'show_option_all'    => '',
+
+'show_option_none'   => __('No categories'),
+
+'orderby'            => 'name',
+
+'order'              => 'ASC',
+
+'style'              => 'list',
+
+'show_count'         => 0,
+
+'hide_empty'         => 0,
+
+'use_desc_for_title' => 1,
+
+'child_of'           => 0,
+
+'feed'               => '',
+
+'feed_type'          => '',
+
+'feed_image'         => '',
+
+'exclude'            => '',
+
+'exclude_tree'       => '',
+
+'include'            => '',
+
+'hierarchical'       => true,
+
+'title_li'           => __( '<p class="sitemap_heading">Категории врачей</p>' ),
+
+'number'             => NULL,
+
+'echo'               => 1,
+
+'depth'              => 0,
+
+'current_category'   => 0,
+
+'pad_counts'         => 0,
+
+'taxonomy'           => 'doctor-category',
+
+'walker'             => 'Walker_Category',
+
+'hide_title_if_empty' => false,
+
+'separator'          => '<br />',
+
+);
+
+
+
+
+
+wp_list_categories( $args );
+
+
+
+
+
+?>   </div>
+
+  <div class="col-12">  
+
+<?php  
+
+ $count_posts = wp_count_posts();
+
+ $published_posts = $count_posts->publish;
+
+
+
+ if ($published_posts!=0) {echo '<p class="sitemap_heading">Страницы врачей</p>  ';}
+
+ ?>
+
+
+
+
+
+<ul >
+
+<?php
+
+global $post;
+
+$args = array(  'taxonomy'=>'doctor-category', 'post_type'=>'doctor', 'post_status'=>'publish', 'posts_per_page'=>-1);
+
+$myposts = get_posts( $args );
+
+foreach( $myposts as $post ){ setup_postdata($post);  ?>        
+
+<li>   <a href="<?php the_permalink(); ?>">     <p><?php the_title(); ?></p>   </a> </li>                  
+
+<?php
+
+}
+
+wp_reset_postdata();
+
+?>  
+
+ </ul>  
+
+ </div>
+
+           </div>
+
+       </div>
+
+   </div>
+
+
+
+<?php
+
+get_footer();
+
